@@ -67,6 +67,7 @@ class FormInput extends Component {
           type="text"
           value={this.state.username.value}
           onChange={this.onChange.bind(this, 'username')}
+          errors={[this.state.username.isValidLength, this.state.username.hasSpecialChars]}
         />
       </div>
     );
