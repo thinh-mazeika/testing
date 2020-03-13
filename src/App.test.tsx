@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import App from './FormInput';
+import App from './components/Form/Form';
 
 test('renders learn react link', () => {
   const { getByText } = render(<App />);
