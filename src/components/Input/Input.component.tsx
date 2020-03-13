@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, { ChangeEvent } from 'react';
 import './Input.component.css';
 
 interface Props {
@@ -14,27 +14,28 @@ interface Props {
   }[];
 }
 
-export const Input = (props:Props) => {
-  const {id, name, placeholder, onChange, type, value, errors} = props;
+export const Input = (props: Props) => {
+  const { id, name, placeholder, onChange, type, value, errors } = props;
+
+  const errorsList = errors.map((error, i) => error.hasError
+    ? <div className='error-message' key={i}>{error.errorMessage}</div>
+    : null)
+
   return (
     <div className='form-field'>
       <div className='errors-container'>
-        {
-          errors.map((error, index) => error.hasError ? 
-            <div className='error-message' key={index}>{error.errorMessage}</div>
-             : null
-          )
-        }
+        {errorsList}
       </div>
       <label>{name}</label>
 
       <input
-        id = {id}
-        name = {name}
-        placeholder = {placeholder}
-        type = {type}
-        value = {value}
-        onChange = {onChange}
+        data-testid={name}
+        id={id}
+        name={name}
+        placeholder={placeholder}
+        type={type}
+        value={value}
+        onChange={onChange}
       />
     </div>
   )
